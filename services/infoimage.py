@@ -92,9 +92,9 @@ def create_report_image(report_data, token_address):
         risk_label_height = bbox[3] - bbox[1]
         y_position += max(circle_height, risk_label_height) + vertical_spacing + 30
 
-        # Risks section
+        # Risks section (height calculation)
         risks = report_data.get("risks", [])[:3]
-        for risk in risks:
+        for i, risk in enumerate(risks):
             risk_name = risk.get("name", "Unknown Risk")
             risk_level = risk.get("level", "unknown").upper()
             risk_value = risk.get("value", "")
@@ -173,7 +173,7 @@ def create_report_image(report_data, token_address):
         draw.text((left_margin + circle_radius * 2 + 60, y_position + circle_radius - risk_label_height//2), risk_level, font=header_font, fill=score_color)
         y_position += circle_height + vertical_spacing + 30
 
-        # Risks section
+        # Risks section (drawing phase)
         draw.text((left_margin, y_position), "Top Risks:", font=header_font, fill=white)
         y_position += risk_label_height + vertical_spacing
 
