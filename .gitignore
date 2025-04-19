@@ -1,0 +1,5 @@
+.env
+services/credentials.py
+services/last_id.txt
+services/twitter_bot.log
+created_image.png
